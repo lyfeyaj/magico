@@ -1,0 +1,25 @@
+{
+  "name": "magico",
+  "version": "1.0.0",
+  "description": "Magic object accessor for javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lyfeyaj/magico.git"
+  },
+  "keywords": [
+    "magico",
+    "magic",
+    "object",
+    "accessor"
+  ],
+  "author": "lyfeyaj",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lyfeyaj/magico/issues"
+  },
+  "homepage": "https://github.com/lyfeyaj/magico#readme"
+}
