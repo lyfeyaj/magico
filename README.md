@@ -53,7 +53,7 @@ get the value of object under the corresponding path.
 ```javascript
 Magico.get(obj, 'a') // => 3
 Magico.get(obj, 'c.d[0]') // => 'zero'
-Magico.get(obj, 'e.d.a')
+Magico.get(obj, 'e.d.a') // => '2'
 ```
 ### Magico.exists(obj, path)
 Check if the value of the obj under the corresponding path exists
