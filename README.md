@@ -14,6 +14,11 @@ $ npm install --save magico
 # Usage
 
 ```javascript
+```
+
+## 类方法
+
+```javascript
 const Magico = require('magico');
 
 let obj = {
