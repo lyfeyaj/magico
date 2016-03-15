@@ -28,7 +28,7 @@ function isArray (str) {
  * Check if a string is a positive integer
  */
 
-function isInteger (obj) {
+function isPositiveInteger (obj) {
   if (isString(obj)) {
     return /^(0|[1-9]\d*)$/.test(obj);
   } else {
@@ -93,7 +93,7 @@ function _eval (type, obj, path, value) {
     case 'remove':
       if (path.length === 0) {
 
-        if (isArray(obj) && isInteger(key)) {
+        if (isArray(obj) && isPositiveInteger(key)) {
           key = Number(key);
 
           if (obj.length - 1 < key) return false;
@@ -110,7 +110,7 @@ function _eval (type, obj, path, value) {
       break;
     case 'exists':
       if (path.length === 0) {
-        if (isArray(obj) && isInteger(key)) {
+        if (isArray(obj) && isPositiveInteger(key)) {
           key = Number(key);
           return obj.length - 1 >= key;
         } else {
