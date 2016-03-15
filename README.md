@@ -44,7 +44,7 @@ The final object
 ```javascript
 { a: 3,
   b: 2,
-  c: { d: [ 'zero', 'second' ], e: { f: [Object] } },
+  c: { d: [ 'zero', 'second' ], e: { f: [1, 2, 3, 4, 5, 6] } },
   e: { d: { a: '2' } } }
 ```
 ### Magico.get(obj, path)
@@ -76,7 +76,7 @@ The final object
 { a: 3,
   b: 2, 
   c: { d: [ 'zero' ], 
-  e: { f: [Object] } }, e: {} }
+  e: {}
 ```
 ### Magico.wrap(obj)
 Return Magico instance witch wrapd the obj for later use
