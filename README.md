@@ -8,7 +8,7 @@ Magic object accessor for javascript!
 # Install
 
 ```bash
-$ npm install --save pageres
+$ npm install --save magico
 ```
 
 # Usage
