@@ -1,11 +1,46 @@
-# Magico
+Magico
+=======
+
+[![Build Status](https://travis-ci.org/lyfeyaj/magico.svg?branch=master)](https://travis-ci.org/lyfeyaj/magico)
 
 Magic object accessor for javascript!
+
+# Install
+
+```bash
+$ npm install --save pageres
+```
+
+# Usage
 
 ```javascript
 const Magico = require('magico');
 
-var originalObj = { a: 1, b: 2, c: { d: ['first', 'second'] } };
+let obj = {
+  a: 1,
+  b: 2,
+  c: {
+    d: ['first', 'second'],
+    e: {
+      f: [1, 2, 3, 4, 5, 6]
+    }
+  }
+};
+
+// Magico.get(obj, path)
+
+Magico.get(obj, 'c.d[0]')       // => 'first'
+Magico.get(obj, 'a')            // => 1
+Magico.get(obj, 'c.e.f')        // => [1, 2, 3, 4, 5, 6]
+
+Magico.get(obj, ['c', 'd', 0]); // => 'first'
+Magico.get(obj, ['a']);         // => 1
+
+// Magico.set(obj, path)
+
+
+
+var originalObj = ;
 
 var obj = new Magico(originalObj);
 

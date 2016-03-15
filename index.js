@@ -28,8 +28,12 @@ function isArray (str) {
  * Check if a string is a positive integer
  */
 
-function isInteger (str) {
-  return /^(0|[1-9]\d*)$/.test(str);
+function isInteger (obj) {
+  if (isString(obj)) {
+    return /^(0|[1-9]\d*)$/.test(obj);
+  } else {
+    return (obj >>> 0) === obj;
+  }
 }
 
 function isNil (obj) {
