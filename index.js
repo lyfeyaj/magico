@@ -55,6 +55,11 @@ function compact (array) {
  */
 
 function _eval (type, obj, path, value) {
+  if (isNil(path)) return;
+
+  // Turn positive integer into string
+  if (isPositiveInteger(path)) path = String(path);
+
   // Parse string path into an array
   if (isString(path)) {
     path = compact(path.trim().split(SEPERATOR));
@@ -133,6 +138,8 @@ function _eval (type, obj, path, value) {
  * @api public
  */
 function Magico(obj) {
+  if (!(this instanceof Magico)) return new Magico(obj);
+
   this._obj = obj;
 }
 
@@ -146,7 +153,7 @@ function Magico(obj) {
  */
 
 Magico.wrap = function (obj) {
-  return new Magico(obj);
+  return Magico(obj);
 };
 
 /**
@@ -205,6 +212,17 @@ Magico.exists = function (obj, path) {
 
 Magico.remove = function (obj, path) {
   return !!_eval('remove', obj, path);
+};
+
+/**
+ * ### Magico.access
+ *
+ * @name Magico.access
+ * @return {Object} return an instance for specific path
+ * @api public
+ */
+Magico.access = function (obj, path) {
+  return Magico(Magico.get(obj, path));
 };
 
 /**
@@ -271,6 +289,18 @@ Magico.prototype.remove = function (path) {
 
 Magico.prototype.toObject = function () {
   return this._obj;
+};
+
+/**
+ * ### Magico.prototype.access
+ *
+ * @name Magico.prototype.access
+ * @return {Object} return an instance for specific path
+ * @api public
+ */
+
+Magico.prototype.access = function (path) {
+  return Magico.access(this._obj, path);
 };
 
 // Export Magico function
