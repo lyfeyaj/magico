@@ -9,11 +9,16 @@ var STRING_DETECTOR = '[object String]';
 var ARRAY_DETECTOR = '[object Array]';
 
 /*!
+ * Get object string tag
+ */
+var objToString = Object.prototype.toString;
+
+/*!
  * Check if an object is a string
  */
 
 function isString (str) {
-  return Object.prototype.toString.call(str) === STRING_DETECTOR;
+  return objToString.call(str) === STRING_DETECTOR;
 }
 
 /*!
@@ -21,7 +26,7 @@ function isString (str) {
  */
 
 function isArray (str) {
-  return Object.prototype.toString.call(str) === ARRAY_DETECTOR;
+  return objToString.call(str) === ARRAY_DETECTOR;
 }
 
 /*!
@@ -51,10 +56,10 @@ function compact (array) {
 }
 
 /*!
- * Eval an object for specific action type: `get`, `set`, `remove`, `exists`
+ * Coerce an object for specific action: `get`, `set`, `remove`, `exists`
  */
 
-function _eval (type, obj, path, value) {
+function coerce (type, obj, path, value) {
   if (isNil(path)) return;
 
   // Turn positive integer into string
@@ -127,7 +132,7 @@ function _eval (type, obj, path, value) {
       return;
   }
 
-  return _eval(type, obj[key], path, value);
+  return coerce(type, obj[key], path, value);
 }
 
 /**
@@ -168,7 +173,7 @@ Magico.wrap = function (obj) {
  */
 
 Magico.set = function (obj, path, value) {
-  return !!_eval('set', obj, path, value);
+  return !!coerce('set', obj, path, value);
 };
 
 /**
@@ -182,7 +187,7 @@ Magico.set = function (obj, path, value) {
  */
 
 Magico.get = function (obj, path) {
-  return _eval('get', obj, path);
+  return coerce('get', obj, path);
 };
 
 /**
@@ -196,7 +201,7 @@ Magico.get = function (obj, path) {
  */
 
 Magico.exists = function (obj, path) {
-  return !!_eval('exists', obj, path);
+  return !!coerce('exists', obj, path);
 };
 
 /**
@@ -211,7 +216,7 @@ Magico.exists = function (obj, path) {
  */
 
 Magico.remove = function (obj, path) {
-  return !!_eval('remove', obj, path);
+  return !!coerce('remove', obj, path);
 };
 
 /**
