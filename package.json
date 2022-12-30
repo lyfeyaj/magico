@@ -24,6 +24,6 @@
   "homepage": "https://github.com/lyfeyaj/magico#readme",
   "devDependencies": {
     "chai": "^4.3.4",
-    "mocha": "^6.2.3"
+    "mocha": "^10.2.0"
   }
 }
